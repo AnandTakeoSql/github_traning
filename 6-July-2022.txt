@@ -1,0 +1,191 @@
+Database /Schema
+
+MySql/Sql Server 
+ Database 
+
+Oracle 
+Schema
+
+Database 
+Database is  the  container  it contains data and logs files .
+
+Schema 
+Schema are like a folder with in database 
+HR -> Humain Resources Emp/ Dept/ Job desc etc 
+SLS -> Sales   Sales invoice / Sales order / Shipment 
+MNF -> Manufacturing
+
+How to  create database in Mysql 
+Varchar2 is not supported 
+MySql - Database  - Where table/database created/drop
+Workbench - IDE/Console where sql query execute
+
+To create database .
+Syntax create database database_name 
+
+To Show database 
+Syntax  show databases 
+
+Use database 
+
+Syntax : use database_name 
+
+Drop database 
+
+syntax Drop database_name 
+
+For Table Releated Information
+Table syntax
+
+create table employee_details(
+id int not null auto_increment,
+name varchar(20) not null,
+occupation varchar(20) not null,
+age int not null,
+primary key (id)
+);
+
+Describe table 
+Syntax desc table_name  or describe table_name
+
+To add column in Table 
+Syntax : alter table table_name  add field_name  data_type constraint 
+after field_name 
+
+alter table employee_details add l_name varchar(20) not null
+after name
+
+To show table 
+syntax show table 
+
+Rename Table 
+syntax : Rename table old_table_name to new_table_name
+         Rename table employee_details to employee
+
+Truncate/Drop
+Truncate  
+Synatx : Truncate table table_name
+
+Drop 
+Syntax : Drop table table_name
+
+Diff b/n Truncate/ Drop
+Truncate - >  In a table all records are remove but table will be available .
+Drop - > Records and Table will be remove .
+
+To change the column_name 
+Syntax : alter table table_name change column old_column_name  new_column_name
+datatype 
+
+alter table employee change column name first_name varchar(20);
+
+Table command 
+create table emp_info(
+id int not null,
+f_name varchar(20) not null,
+occupation varchar(30) not null,
+age int
+salary decimal (8,2),
+primary key (id)
+);
+
+
+
+insert into emp_info(id, f_name, occupation, age, salary)
+values
+(101,'Peter','Engg', 32, 6000.00),
+(102,'Joseph','Developer', 28, 65000.00),
+(103,'Mike','Software Engg', 21, 55000.00),
+(104,'Stephan','Scientiest', 18, 9000.00),
+(105,'John','Oracle', 19, 8000.00),
+(106,'Jack','Jave Dev', 17, 7000.00),
+(107,'Ram','Sql Dev', 16, 6000.00),
+(108,'Anand','Report Dev', 26, 5000.00),
+(109,'Prasda','Python Dev', 28, 4000.00)
+(110,'Johnson',' Sr Soft Eng', 43, 3000.00),
+(111,'Prince','Tech Lead', 22, 2000.00);
+
+
+Select syntax
+1 Select * from table_name
+ * means all columns
+2 select some field name in table 
+
+select column_name1, column_name2, --   from table_name;
+select f_name, occupation from emp_info;
+
+Order by
+Syntax
+select * from emp_info order by id asc;
+select * from emp_info order by id desc;
+select * from emp_info order by age asc;
+select * from emp_info order by age desc;
+select * from emp_info order by salary desc;
+select * from emp_info order by salary asc;
+select * from emp_info order by f_name ;
+By default shorting asc (asscending order)
+asc -> asscending order
+desc - > Descending order
+
+Where clause -> Filter condition
+
+select * from emp_info where id = 102;
+select * from emp_info where f_name = 'John';
+select * from emp_info where age = '22';
+
+AND clause 
+Both condition is True 
+select * from emp_info where id = 102 and age 22;
+OR clause 
+Any value is True the output will print 
+
+
+
+select * from emp_info
+where country_name = 'USA' and designation = 'Software Engg'
+and state_name = 'New Jersy';
+
+
+select * from emp_info
+where country_name = 'USA' or designation = 'Software Engg'
+and state_name = 'New Jersy';
+
+IN Operater
+select * from emp_info where id in (102,105,107);
+select * from emp_info where age in (28,32,35);
+
+
+= conditions only one value filter
+In -Multiple value filter
+
+Between
+select * from emp_info where id  between 102 and 106;
+select * from emp_info where salary between  2000.00 and 5000.00;
+
+
+
+Database 
+create/drop/use 
+Table
+Create/rename /drop/
+Column
+add/ rename 
+select
+order by asc/desc
+where
+AND
+OR
+IN
+
+
+
+
+
+
+
+
+
+
+
+
+ 
