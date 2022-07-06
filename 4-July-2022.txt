@@ -1,0 +1,205 @@
+SQL 
+Stracture Query Language 
+which is computer Language for storing manipulating and retriving data stored in 
+relational database system .
+
+
+Sql is the standred language for relational database system
+Like
+My Sql- Installed (database) and Workbench (Ide)
+Sql Server 
+Oracle
+Postgress Sql .
+
+
+SQL Commands 
+1 DDL - Data Defination Language (create, alter, drop)
+2 DML - Data Manipulation Language (insert, update, delete)
+3 DCL - Data Command Language ( grant(access providing), revoke)
+4 DQL - Data Query Language (select)
+
+DDL -
+a > Create -> create a new table /views / objects 
+b -> Alter  -> Modify table name / database
+c -> Drop - > Remove table /views / objects 
+
+create syntax( 
+create  table table_name 
+field name1  -data_type 
+field name2  -data_type
+field name3  -data_type
+)
+
+difference between varchar and varchar2 
+
+it is used to store character string variable  length
+ It has max size of 4000 bytes
+
+varchar2 -    varchar is same varchar2 in oracle 
+
+
+char 
+ max sixe 2000 bytes
+
+Here varchar2
+char - fixed side 
+varchar2 - dynamic size 
+
+DML 
+insert  ->  creates  record
+update  -> modifies
+delete  -> deletes 
+
+DCL -
+Grant
+Revoke 
+
+DQL 
+select 
+
+RDBMS
+ Relational Database management system
+
+RDMS is the basic  for sql and all modern database system 
+like Mysql, Sql Server, Oracle 
+
+Table 
+The collection of releated data entries and it consistes of rows and columns
+
+
+Record 
+ A record is also called row of data
+
+
+Field 
+Column -> A column is the vertical entity in a table 
+
+Null values 
+
+A field that appears to be blank 
+ie no value,
+
+SQL Constrainst
+1 Not null Constraint
+2 Default constraint
+3 Unique Constraint
+4 Primary Key
+5 Foreign Key
+6 Check Constraint
+
+1 Not null constraint
+
+ensures that column cann't have null values.
+
+To prevent null value is not store 
+
+ create table customers(
+ id int not null,
+ name varchar2(20) not null ,
+ age int,
+ address varchar2(20),
+ salary number(6,2)
+ );
+ 
+ desc customers;
+ 
+ 
+ alter table customers modify
+ age int not null;
+
+alter table table_name modify column_name  data_type not null;
+alter table customers modify age int not null;
+
+
+Default Constraint 
+
+Provides a default value  for a column 
+Dept   
+1 Oracle  
+2 Java
+3 BI 
+4 Python 
+
+
+create table customers1(
+id int not null,
+name varchar2(20),
+age int
+salary number(8,2) default 50000.00,
+address varchar2(100)
+);
+
+insert into customers1 values 
+(1,'Jones',25, 4500,'Delhi'
+);
+ 
+ 
+ insert into customers1 (id, name,age,address)
+ values(2,'Jack',28,'Mumbai');
+ 
+
+Unique Constraints
+Ensures that all values in column are different (not same )
+
+create table customers2(
+id int not null,
+name varchar2(20),
+age not null unique,
+address varchar2(30)
+);
+
+
+Primary Key
+Foreign Key 
+Primary Key
+Syntax
+
+create table customers4(
+id int not null,
+name varchar2(20),
+age int,
+address varchar2(20),
+primary key (id)
+);
+
+
+If you have not added primary key in table 
+alter table  customers5 add constraint pk  primary key(id);
+
+alter table table_name add constraint constrint_name  primary key(field_name)
+
+Primary key - 
+
+Diff b/n primary key and unique key
+major diff primay key 
+   null values not store in database 
+ Unique key - > null(only one) values store in database 
+
+Foreign Key 
+
+Relationship b/n primary key and foreign key
+Main purpose 
+Joining of two or more tables 
+
+
+
+1 Constraints
+DDL   create/alter/dorp
+DML   insert/update/delete
+DCL   grant/Revoke
+DQL   Select
+
+Constraints
+1 Not null
+2 Default
+3 Unique
+4 Primary
+5 Foreign Key
+
+
+
+
+
+
+
+
