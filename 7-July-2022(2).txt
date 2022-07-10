@@ -1,0 +1,126 @@
+Join
+Join is common record of two table or more table 
+Types of Joins 
+1 Inner Join
+2Left Join/Left Outter Join
+3 Right Join /Right Outter Join
+4 Full Join/Cross Join
+
+Inner Join 
+Common records of two or more table 
+
+
+create table customer
+(customer_id int not null,
+customer_name varchar(30),
+Income decimal(8,2),
+Qualifaction varchar(30),
+primary key(customer_id)
+)
+
+Insert into customers values
+(1,'John',4000,'BTech'),
+(2,'Mark',6000,'MBA'),
+(3,'Rayn',8000,'BE'),
+(4,'Adam',10000.32,'Eng'),
+(5,'Sachin',12000.85,'DR');
+To create order tables 
+create table orders(
+order_id  int not null,
+order_date date,
+customer_id int,
+price int not null,
+primary key (order_id)
+);
+
+## Insert records in orders Table
+insert into orders values 
+
+(1002, str_to_date('02-02-2022','%d-%m-%Y'),2,1000),
+(1003, str_to_date('03-01-2022','%d-%m-%Y'),1,400),
+(1004, str_to_date('04-04-2022','%d-%m-%Y'),2,300),
+(1005, str_to_date('05-06-2022','%d-%m-%Y'),1,100),
+
+(1006, str_to_date('06-01-2022','%d-%m-%Y'),3,500);
+
+Join Syntax
+1 
+select field_name , field_name2, field_name3.......
+from  table_name1 
+inner join table_name2
+on Column_name(table_name1) = column_name(table2)
+
+Select customer_name, order_date, price
+from customer c
+inner join orders o
+on c.customer_id = o.customer_id;
+
+
+Select customer_name, order_date, price  -- Field_name
+from customer     -- Table_name1
+inner join orders  -- Table_name2
+on customer.customer_id = orders.customer_id   -- Join b/n two common field 
+order by customer_name;
+
+Left Join /Left Outer Join 
+No difference b/n left join and left outer join
+
+Limit im  mysql
+To show information as per required number 
+
+To find top 3 higher salary in emp
+select * from customer
+order by income  desc
+limit 3;
+
+**************************
+To find lowest salary in emp
+select * from customer
+order by income  asc
+limit 3;
+
+(4,'John','Java',100),
+(5,'Mike','PowerBi',1100),
+(6,'Anand','Java',900),
+(7,'Sachin','Oracle',800),
+(8,'Sachin','Python',700),
+
+
+
+
+
+
+Table1 --all records are showing
+Table2 -- only shaded area showing
+What is the left join?
+Table A all records and table b only common 
+
+Select customer_name, order_date, price  
+from customer     
+left  join orders  
+on customer.customer_id = orders.customer_id   
+order by customer_name;
+
+Right Join /Right outer join
+
+Syntax
+Select customer_name, order_date, price  
+from customer     
+right  join orders  
+on customer.customer_id = orders.customer_id   
+order by customer_name;
+
+Full Join/ Cross Join
+
+Syntax
+Select field_name1, field_name2,  ------
+from table1 
+cross join table2
+
+******************************
+Select customer.customer_name, orders.order_date, orders.price 
+ from customer   
+cross  join orders  
+
+
+
