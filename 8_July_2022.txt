@@ -1,0 +1,11 @@
+select region_name, country_name,stree_address,postal_code,
+       department_name
+from regions --T1
+inner join country --T2
+on regions.regions_id = country.regions_id
+inner joins location --T3
+on location.country_id = country.country_id
+inner join department T4
+on department.location_id = location.location_id
+
+T4, T5
