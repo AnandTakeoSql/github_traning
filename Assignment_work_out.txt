@@ -1,0 +1,207 @@
+1 . Write a SQL statement to create a simple table 
+countries including columns country_id,country_name and region_id.
+Syntax
+
+create table countries(
+country_id int,
+country_name varchar(20),
+region_id  int
+);
+
+******************************************
+2 Write a SQL statement to create a simple table countries
+ including columns country_id,country_name and region_id
+ which is already exists.
+ Syntax 
+       create table if not exists countries(
+        country_id int,
+        country_name varchar(20),
+        region_id int
+        );
+
+**************************************************
+3 Write a SQL statement to create the structure of a 
+table dup_countries similar to countries.
+Syntax
+    create table if not exists dup_countries like countries;
+
+*************************************************************
+4. Write a SQL statement to create a 
+duplicate copy of countries table 
+including structure and data by name dup_countries.
+
+syntax
+ create table if not exists dup_countries1 as
+select * from countries;
+
+4(a) create duplicate table countries including
+same structure but data in country_id, country_name
+Syntax
+create table if not exists dup_countries2 as
+select country_id , country_name from countries;
+
+*********************************************
+5 Write a SQL statement to create a table 
+countries set a constraint NULL.
+Syntax
+create table countries2(
+country_id int not null,
+country_name varchar(20) not null,
+region_id   int not null
+);
+****************************************************
+6. Write a SQL statement to create a table named
+  jobs including columns job_id, job_title, 
+ min_salary, max_salary and check whether
+ the max_salary amount exceeding the upper limit 25000.
+Syntax
+create table jobs(
+job_id int,
+job_title varchar(20),
+min_sal decimal(8,2),
+max_sal decimal (8,2)
+check (max_sal <= 25000)
+);
+
+**************************************************
+7. Write a SQL statement to create a table named 
+countries including columns country_id, country_name 
+and region_id and make sure that no countries except
+ Italy, India and China will be entered in the table.
+Syntax
+create table countries3(
+country_id int,
+country_name varchar(20) check (country_name in
+('Italy', 'India', 'China')),
+region_id int
+);
+**********************************************
+8. Write a SQL statement to create a table named
+ countries including columns country_id,
+country_name and region_id and make sure
+ that no duplicate data against column country_id 
+will be allowed at the time of insertion.
+
+Syntax
+create table countries4(
+country_id int unique,
+country_name varchar(20),
+region_id int);
+
+create table countries4(
+country_id int 
+country_name varchar(20),
+region_id int,
+primary key (country_id)
+);
+
+*******************************************************
+9. Write a SQL statement to create a table named 
+jobs including columns job_id, job_title, min_salary
+ and max_salary, and make sure that, the default
+ value for job_title is blank and min_salary 
+is 8000 and max_salary is NULL will be entered 
+automatically at the time of insertion if no value 
+assigned for the specified columns.
+
+Syntax
+create table jobs1(
+job_id int ,
+job_title varchar(20) not null default  ' ',
+min_sal decimal(6,2) default 8000,
+max_sal decimal(6,2) default null
+);
+
+***********************************************
+10. Write a SQL statement to create a table countries
+ including columns country_id, country_name and 
+region_id and make sure that the combination of 
+columns country_id and region_id will be unique.
+
+** Composite Key -> If two or more than two column is primary is 
+                     calle composite key
+
+create table countries4(
+country_id int not null,
+country_name varchar(20) not null,
+region_id int not null,
+primary key (country_id,region_id)
+);
+
+create table countries4(
+country_id int not null unique  
+country_name varchar(20) not null,
+region_id int not null unique
+
+);
+
+primary key(column_name)  - Fast
+Unique
+ coulumn_name ->Not null + unique   slow performance
+**************************************************
+11. Write a SQL statement to rename the table
+ countries to country_new.
+Syntax
+
+alter table countries rename country_new;
+
+************************************************
+12. Write a SQL statement to add a column region_id 
+    to the table country_new .
+Syntax
+Alter table country_new add column region_id1 int;
+**************************************************
+13. Write a SQL statement to add a columns ID as
+   the first column of the table country_new.
+Syntax
+alter table country_new add id int first;
+*********************************************
+14. Write a SQL statement to add a column region_id 
+   after state_province to the table locations.
+15. Write a SQL statement change the data type 
+    of the column country_id to varchar in the table country_new.
+Syntax
+alter table country_new modify country_id  varchar(10);
+
+****************************************************
+16. Write a SQL statement to drop the column region_id
+ from the table country_new.
+
+Syntax
+Alter table country_new  drop  column region_id1;
+**********************************************
+17. Write a SQL statement to change the name of the column
+ country_name to cnt_nm, keeping the data type and size same.
+Syntax
+Alter table country_new rename  column  country_name to cnt_nm  ;
+
+*******************************************************
+18. Write a SQL statement to add a primary key
+ for the columns country_name in the country_new table.
+Syntax
+alter table country_new add primary key (country_name );
+
+******************************************************
+19. Write a query to get the maximum and minimum 
+salary from employees table
+20.Write a query to get the total salaries payable to employees
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
