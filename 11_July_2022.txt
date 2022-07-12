@@ -1,0 +1,22 @@
+Table Regions
+Syntax
+create table if not exists regions
+(region_id int,
+region_name varchar(20),
+primary key(region_id)
+);
+
+Table Country 
+create table  if not exists countries(
+country_id char(2),
+country_name  varchar(20),
+region_id int,
+primary key (country_id)
+);
+
+Table Locations
+create table locations
+
+
+create database hr;
+use hr
