@@ -1,0 +1,144 @@
+Set Operaters 
+cobine results of two or more sql queries
+
+Type of set operaters
+1 union
+2 union all
+3 intersect 
+4 minus
+
+
+Union Operaters ->   To remove the duplicate records
+
+In set operaters there are somer certain conditions
+
+1 The number and order of column must be same
+2 Data types must be compatible
+
+Syntax 
+   select column_1, column_2 , column_3 
+   from table1
+   union/union all/intrsect/minus
+   select column_1, column_2, column_3
+   from table2
+
+Condition 2 data type must be compatible
+
+    syntax 
+select column_1(varchar) , column2(int), column3(date)
+from table1
+union/union all/intersect/minus
+select column_1(varchar), column2(int), column3(date)
+from table2
+
+union -> To remove duplicate records
+
+create table table_1
+(
+ID int
+)
+insert into table_1 values(1,2,3);
+
+create table table_2
+(ID int
+)
+
+Insert into table_2 values(2,3,4);
+
+union 
+
+select employe_id(int)  from table_1
+union
+select id(int)  from table_2;
+
+If we have 2 sets of records
+may be some value is common in two table 
+so remove dublicate records
+
+Union All -> Not remove the duplicate records
+syntax
+Select id from table_1
+union all
+select id from table_2
+order by id;
+
+Intersect Operater 
+ In SQL intersect operater is used to combine two
+or more select statments  but return rows only  from 
+the first select statment ie identical rows in the second.
+
+Syntax
+ select id from table_1
+ intersect
+select id from table_2;
+
+Minus operater -> 
+Minus operater compares the result of two queries
+ and return distinct rows from  the result .
+
+** Diff b/n union and join
+what is the distinct?
+Not repeated value 
+
+Minus Syntax
+select id from table_1
+minus
+select id from table_2
+ 
+Join -> combines the result of two and more tables 
+Union -> Only common records are present
+
+Join Syntax
+select table_1.id , table_2.id 
+from table_1.id
+inner join table_2
+on table_1.id = table_2.id;
+
+Update -> Syntax
+To change and modify the table records 
+
+create table trainner(
+t_id int
+t_name varchar(20),
+sub_name varchar(20)
+);
+
+insert into trainner values 
+(1,'Jack','Java'),
+(2,'Johnson','Oracle'),
+(3,'Rocky','MySql');
+
+update syntax 
+
+update table_name set column_name  = updated_value
+where condition;
+
+update trainner  set  sub_name = 'Python'
+where t_id =1;
+
+
+Create Table syntax
+
+create table emp_table(
+Emp_id int,
+Emp_name varchar(30),
+Salary  decimal(6,2),
+Dep_id int,
+country  varchar(20)
+);
+insert into emp_table values
+(1,	Sachin,	2500,	10,	India),
+(2,	Saurav,	3500,	20,	USA),
+(3,	Rahul,	4500,	10,	Inida),
+(4,	Abhishek,	5500,	10,	Nepal),
+(5,	Ajay,	6500,	30,	USA);
+
+Delete -> To remove the particular records in table 
+syntax
+delete from table where condition
+delete from emp_table where emp_id =1;
+
+
+
+
+
