@@ -1,0 +1,32 @@
+1. Write a SQL statement to insert a record with your own value into the table countries against each columns.
+2. Write a SQL statement to insert one row into the table countries against the column country_id and country_name.
+3. Write a SQL statement to create duplicate of countries table named country_new with all structure and data.
+4. Write a SQL statement to insert NULL values against region_id column for a row of countries table.
+5. Write a SQL statement to insert 3 rows by a single insert statement.
+6. Write a SQL statement insert rows from country_new table to countries table.
+7. Write a SQL statement to insert one row in jobs table to ensure that no duplicate value will be entered in the job_id column.
+8. Write a SQL statement to insert a record into the table countries to ensure that, a country_id and region_id combination will be entered once in the table.
+9. Write a SQL statement to insert rows into the table countries in which the value of country_id column will be unique and auto incremented.
+10. Write a SQL statement to insert records into the table countries to ensure that the country_id column will not contain any duplicate data and this will be automatically incremented and the column country_name will be filled up by 'N/A' if no value assigned for that column.
+11. Write a SQL statement to insert rows in the job_history table in which one column job_id is containing those values which are exists in job_id column of jobs table.
+12. Write a SQL statement to insert rows into the table employees in which a set of columns department_id and manager_id contains a unique value and that combined values must have exists into the table departments.	
+13. Write a SQL statement to insert rows into the table employees in which a set of columns department_id and job_id contains the values which must have exists into the table departments and jobs.
+14. Write a SQL statement to change the email column of employees table with 'not available' for all employees.
+15. Write a SQL statement to change the email and commission_pct column of employees table with 'not available' and 0.10 for all employees.
+16. Write a SQL statement to change the email and commission_pct column of employees table with 'not available' and 0.10 for those employees whose department_id is 110.
+17. Write a SQL statement to change the email column of employees table with 'not available' for those employees whose department_id is 80 and gets a commission is less than .20%
+18. Write a SQL statement to change the email column of employees table with 'not available' for those employees who belongs to the 'Accouning' department.
+19. Write a SQL statement to change salary of employee to 8000 whose ID is 105, if the existing salary is less than 5000.
+20. Write a SQL statement to change job ID of employee which ID is 118, to SH_CLERK if the employee belongs to department, which ID is 30 and the existing job ID does not start with SH.
+21. Write a SQL statement to increase the minimum and maximum salary of PU_CLERK by 2000 as well as the salary for those employees by 20% and commission percent by .10.
+22. Write a query to get monthly salary (round 2 decimal places) of each and every employee
+23. Write a query to select first 10 records from a table
+24. Write a query to check if the first_name fields of the employees table contains numbers.
+25. Write a query to get the length of the employee names (first_name, last_name) from employees table.
+26. Write a query to get the names (for example Ellen Abel, Sundar Ande etc.) of all the employees from employees table.
+27. Write a query to calculate 171*214+625.
+28. Write a query to get the first 3 characters of first name from employees table.
+29. Write a query get all first name from employees table in upper case.
+20. Write a query to get the number of jobs available in the employees table.
+31. Write a query to get the number of employees working with the company
+32. Write a query to get the average salary and number of employees in the employees table
