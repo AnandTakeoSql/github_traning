@@ -1,0 +1,53 @@
+Analytic Function
+Query by partition
+Windows Function
+
+Avg Sal 
+
+Syntax
+Select avg(sal) from emp;
+When we are using group by
+
+Analytic function
+count
+avg
+sum
+max
+min
+
+Syntax of group by
+
+select avg(column_1), column_2, column_3
+from table_t1
+group by 
+column_2, column_3
+
+Select avg(sal), job from emp
+group by job
+order by job;
+
+
+Order by -> Shorting ASC/DESC
+
+Query by partation
+
+select empno, ename ,deptno, sal, avg(sal) over(partition by deptno)
+ avg_dept_sal
+from emp;
+
+
+Syntax
+select empno, ename ,deptno, sal, avg(sal) over(partition by deptno) avg_dept_sal,
+count(*) over(partition by deptno) as cnt,
+sum(sal) over() tot_sal,
+sum(sal) over (partition by deptno) as sum_of_sal_dept,
+min(sal) over () min_sal,
+min(sal) over (partition by  deptno) as min_sal_by_dept,
+max(sal) over () as max_sal,
+max(sal) over (partition by deptno) as max_sal_dept
+
+from emp;
+
+
+
+
