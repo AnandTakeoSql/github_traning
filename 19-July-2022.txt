@@ -1,0 +1,177 @@
+Lag() function
+To access data of a previous row from the current row.
+Syntax
+select empno, ename , job, sal ,
+lag(sal, 1,0) over(order by sal) as prv_sal,
+lag(sal, 2,0) over(order by sal) as 2_prv_sal,
+lag(sal, 3,0) over(order by sal) as 2_prv_sal
+from emp;
+
+# Sal def b/n current sal and previous sal
+
+select empno, ename , job, sal ,
+lag(sal, 1,0) over(order by sal) as prv_sal,
+sal- lag(sal, 1,0) over(order by sal)   as sal_deff
+from emp;
+
+
+Lead Function
+
+               To access data of subsequent row from the current row.
+
+select empno, ename , job, sal ,
+lead(sal,1,0) over ( order by sal) as sal_nxt,
+lead(sal,1,0) over (partition by deptno order by sal) sal_nxt2
+from emp;
+
+
+select empno, ename ,deptno, job, sal ,
+lead(sal,1,0) over (partition by deptno order by sal) sal_nxt2
+from emp;
+
+
+First_value 
+    -> Return the first value in the current result .
+
+Syntax
+
+select empno, ename , deptno, sal,
+first_value(sal)  over (partition by deptno order  by sal) as lowest_sal_dept
+from emp;
+
+select empno, ename , deptno, sal,
+first_value(sal) over(order by sal) as lowest_sal
+from emp;
+
+
+NTH Value 
+        -> Allows you to get a value from the Nth row in the order set
+
+select empno, ename , deptno, sal,
+nth_value(sal,2) over(order by sal) as second_lowest_value,
+nth_value(sal,3) over(order by sal) as third_lowest_value
+from emp;
+
+
+
+select empno, ename , deptno, sal,
+nth_value(sal,2) over(partition by deptno order by sal) as second_lowest_value
+from emp;
+
+NTILE Function
+
+              ->   to div rows into a specified number of groups 
+
+
+select empno, ename,deptno,sal,
+ntile(5) over (order by sal) as bucket
+from emp;
+
+select empno, ename,deptno,sal,
+ntile(4) over (order by sal) as bucket
+from emp;
+
+select empno, ename,deptno,sal,
+ntile(2) over (partition by deptno order  by sal) as bucket
+from emp;
+
+
+
+Row_Number 
+           ->  To generate a sequentail number  for each row in the result 
+
+select empno, ename, deptno ,
+sal,
+row_number() over (order by sal) as row_no
+from emp;
+
+select empno, ename, deptno ,
+sal,
+row_number() over (partition by deptno order  by sal ) as row_no
+from emp;
+ ** Interview purpose 
+Diff B/n dense_rank, Rank, Row_number
+Dense_Rank -> No will not skip
+Rank -> No will skip
+Row_number -> To count the seq no of records
+
+Synatx
+
+select empno, ename ,
+deptno, sal,
+dense_rank() over (partition by deptno order  by sal) as dns_rnk,
+rank() over (partition by  deptno order by sal) as rnk,
+row_number() over (partition by deptno order by sal) as row_no
+from emp;
+
+
+
+Rollup 
+     ->   To generate subtotal and grand total 
+
+select ename ,deptno, sum(sal) as sal
+from emp
+group by deptno ,ename 
+with rollup
+
+
+## Math Function
+1 ABS() 
+
+select abs(10);
+
+select abs(-10);
+
+select abs(0);
+
+
+2 CEIL()
+
+Just greatest integer value 
+
+select ceil(7.01 );
+select ceil(7.89 );
+select ceil(-7.01 );
+
+
+3 Floor () 
+
+select floor(1.59);
+
+select floor(1.99);
+
+select floor(0);
+
+select floor(-1.59);
+
+select floor(-1.99);
+
+4 MOD  
+
+10/3 = 3*3 =9+1 = 10
+
+Reminder value 
+
+select mod(10,3);
+
+select mod(15,5);
+
+select mod(11,2);
+
+select mod(11,2);
+select mod(11,0);
+select mod(11,12);
+select mod(11,20);
+
+select mod(112222,20);
+
+
+
+
+
+
+
+
+
+
+
