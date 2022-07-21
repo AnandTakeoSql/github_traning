@@ -1,0 +1,156 @@
+To continue Sub - Query 
+1 All keywords in mysql
+2 Any/Some keywords are similar in mysql 
+
+Conditions of All  and Any/Some 
+1 These keywords are used in where/having clause
+2 All and Any/Some operates on subquery that return  multiple values 
+
+** Subquery -> Nested query means parent sql query , child sql query 
+3 All return true  if all of the condition meets 
+4 Any/Some  return true if any/some of the condition meets.
+5 All and Any/Some is boolean 
+Boolean returns two value 
+0 -> False
+1 -> True 
+
+
+Table syntax
+create table if not exists emp_information(
+Name varchar(20),
+salary decimal (10,4),
+deptno int 
+)
+
+
+Insert Syntax
+insert into emp_information values 
+('A', 3000, 5),
+('B', 4000, 5),
+('C', 2500, 4),
+('D', 4300, 4),
+('E', 3800, 5),
+('F', 2500, 5),
+('G', 5500, 1);
+ 
+
+Using HR Schema 
+*** To write SQL query where salary is greater than department id  110
+Syntax
+select * from employees;
+
+select employee_id ,first_name , salary, department_id
+from 
+employees
+order by department_id;
+
+select employee_id ,first_name , salary, department_id
+from 
+employees 
+where salary > All (select salary from employees where department_id = 110);
+
+** Any/Some keywords
+select employee_id ,first_name , salary, department_id
+from 
+employees 
+where salary > any (select salary from employees where department_id = 110);
+
+
+
+## Exists 
+Exist operater is  boolean type (0/1 or T/F)
+It is used in combination with subquery
+
+Syntax 
+CREATE TABLE  if not exists customer  (  
+  cust_id int NOT NULL,  
+  name varchar(35),  
+  occupation varchar(25),  
+  age int  
+);  
+
+CREATE TABLE orders (  
+    order_id int NOT NULL,   
+    cust_id int,   
+    prod_name varchar(45),  
+    order_date date  
+);  
+
+INSERT INTO customer(cust_id, name, occupation, age)   
+VALUES (101, 'Peter', 'Engineer', 32),  
+(102, 'Joseph', 'Developer', 30),  
+(103, 'John', 'Leader', 28),  
+(104, 'Stephen', 'Scientist', 45),  
+(105, 'Suzi', 'Carpenter', 26),  
+(106, 'Bob', 'Actor', 25),  
+(107, NULL, NULL, NULL);  
+
+
+INSERT INTO orders (order_id, cust_id, prod_name, order_date)   
+VALUES (1, '101', 'Laptop', '2020-01-10'),  
+(2, '103', 'Desktop', '2020-02-12'),  
+(3, '106', 'Iphone', '2020-02-15'),  
+(4, '104', 'Mobile', '2020-03-05'),  
+(5, '102', 'TV', '2020-03-20');  
+
+
+
+##  To find the name and occupation of the customer who has places at-least
+one order 
+
+
+Using exists keywords
+
+select customer.name , customer.occupation
+from customer
+where exists (select * from orders
+where customer.cust_id  = orders.cust_id);
+
+Union
+
+seelct column1- datatype , column2 datatype2....
+from table1
+union
+seelct column1- datatype , column2 datatype2....
+from table12
+
+Inner Join
+select c.name , c.occupation
+from customer c
+inner join orders o
+on c.cust_id = o.cust_id;
+
+
+
+## Customer who has not placed any order
+
+select name, occupation
+from customer
+where not exists(select * from  orders 
+where customer.cust_id = orders.cust_id);
+
+
+
+## From the HR schema To find those employee
+who have changed jobs at-least once ;
+
+
+From the employees table and job_history tables
+display details of those employee who have changed job at-least one.
+
+
+Syntax
+
+select customer.name , customer.occupation
+from customer
+where exists (select * from orders
+where customer.cust_id  = orders.cust_id);
+
+
+
+
+
+select first_name , last_name employee_id
+  from employees 
+where exists (select * from job_history 
+where employees.employee_id = job_history.employee_id);
