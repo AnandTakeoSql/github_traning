@@ -1,0 +1,210 @@
+## String Function
+1 concate 
+       -> concatenate two or  more string into a single string 
+Syntax
+ select ('Mysql' 'Tutorial');
+
+select concate(First_name ,' ', last_name ) from employees;
+
+select concat(first_name ,' ',last_name , '->', salary) as Name from employees;
+
+2 INSTR    
+          -> Return the position of the first occurance of a substring  in a string 
+
+syntax 
+        Select instr("Mysql Tutorial", "a") as position_string;
+
+Select instr("Mysql Tutorial", "M") as position_string;
+
+Select instr("Mysql Tutorial", "m") as position_string;
+
+select instr(first_name, 'a') from employees;
+
+
+3 Length 
+                -> Get the length of a string in bytes and in character 
+
+
+syntax : select length ('Mysql Tutorial') as length ;
+select  first_name , length(first_name) as length  from employees;
+
+4 Lower 
+        > convert a string in a lower case 
+syntax   select lower('MYSQL TuToRial')
+ select last_name ,lower(last_name) as lower_char from employees;
+
+
+5 LTRIM 
+       ->   Removes all leading spaces from a string
+
+      select ltrim('    Mysql Tutorial');
+6 Upper  
+        -> convert a string in upper case 
+Syntax 
+       select upper('mysql tutorial');
+ select first_name , upper(first_name) from employees;
+
+7 Replace 
+         -> Search and replace a substring in a string.
+syntax 
+           replace(str, old_string, new_string)
+    select replace('Mysql Tutorial','y','t') replace_fun;
+
+select  replace ('Java is programing language', 'Java', 'MySql');
+
+8 Substring 
+            -> Extract a substring from a position with a specific lenght .
+
+
+              select substring("krish",-5) as sub_fun;
+
+              
+            select substring("krish",1,3) as sub_fun;
+
+TRIM   ' MySql  ' 
+LTRIM   ' MySql'
+RTRIM 'MySql '
+
+## Regular Expression 
+
+Date Function 
+currdate ->   return the current date 
+select curdate();
+
+select current_date(), current_date , curdate();
+
+Date Diff  function
+                 ->   calculte the no of days  b/n two date values ;
+
+select datediff('2022-07-25','2022-07-25');
+select datediff(end_date , start_date) date_diff from job_history where employee_id = 102;
+
+Day function 
+         Get the day of the month of a specified date
+
+select day('2022-05-01')
+
+select day('2022-05-05');
+select day(last_day('2022-04-05')) ;
+
+
+date_add ()  
+           -> Adds a time  value to date value 
+Syntax      date_add('2021-12-31 23:59:59',Interval 1 SECOND);
+
+select date_add('2021-12-31 23:59:59',Interval 1 SECOND) date_add_fun;
+select date_add('2021-12-31 23:59:59',Interval 1 DAY) date_add_fun;
+select date_add('2021-12-31 23:59:59',Interval 1 MONTH) date_add_fun;
+
+
+Year  Return the year for a specified  date 
+
+      Year('2022-01-01')
+select hire_date, year(hire_date)  from employees;
+
+
+Weekday 
+ -> Return the weekday index for a date
+select dayname('2021-02-5'), weekday('2021-02-5')
+
+select dayname(hire_date), weekday(hire_date), hire_date 
+ from employees;
+
+## Managing Hiearicial data in mysql 
+
+## Delete Cascade
+
+CREATE TABLE buildings (
+    building_no INT PRIMARY KEY AUTO_INCREMENT,
+    building_name VARCHAR(255) NOT NULL,
+    address VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE rooms (
+    room_no INT PRIMARY KEY AUTO_INCREMENT,
+    room_name VARCHAR(255) NOT NULL,
+    building_no INT NOT NULL,
+    FOREIGN KEY (building_no)
+        REFERENCES buildings (building_no)
+        ON DELETE CASCADE
+);
+
+INSERT INTO buildings(building_name,address)
+VALUES('ACME Headquaters','3950 North 1st Street CA 95134'),
+      ('ACME Sales','5000 North 1st Street CA 95134');
+	  
+	  
+	  
+	 INSERT INTO rooms(room_name,building_no)
+VALUES('Amazon',1),
+      ('War Room',1),
+      ('Office of CEO',1),
+      ('Marketing',2),
+      ('Showroom',2); 
+	  
+	  
+	  
+	  
+	  DELETE FROM buildings 
+WHERE building_no = 2;
+
+  
+**
+Table Syntax 
+
+CREATE TABLE category (
+  id int(10) unsigned NOT NULL AUTO_INCREMENT,
+  title varchar(255) NOT NULL,
+  parent_id int(10) unsigned DEFAULT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (parent_id) REFERENCES category (id) 
+    ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+# Insert statement
+INSERT INTO category(title,parent_id) 
+VALUES('Electronics',NULL);
+
+INSERT INTO category(title,parent_id) 
+VALUES('Laptops & PC',1);
+
+INSERT INTO category(title,parent_id) 
+VALUES('Laptops',2);
+INSERT INTO category(title,parent_id) 
+VALUES('PC',2);
+
+INSERT INTO category(title,parent_id) 
+VALUES('Cameras & photo',1);
+INSERT INTO category(title,parent_id) 
+VALUES('Camera',5);
+
+INSERT INTO category(title,parent_id) 
+VALUES('Phones & Accessories',1);
+INSERT INTO category(title,parent_id) 
+VALUES('Smartphones',7);
+
+INSERT INTO category(title,parent_id) 
+VALUES('Android',8);
+INSERT INTO category(title,parent_id) 
+VALUES('iOS',8);
+INSERT INTO category(title,parent_id) 
+VALUES('Other Smartphones',8);
+
+INSERT INTO category(title,parent_id) 
+VALUES('Batteries',7);
+INSERT INTO category(title,parent_id) 
+VALUES('Headsets',7);
+INSERT INTO category(title,parent_id) 
+VALUES('Screen Protectors',7);
+    
+## To find the root node 
+  select id , title , parent_id 
+  from category  
+where parent_id  is null;
+
+## Finding the immediate children of a node 
+select id , title , parent_id 
+from category  
+where parent_id  =1;
+
+
