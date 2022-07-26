@@ -1,0 +1,81 @@
+              King
+   (select empno, ename , mgr from emp where mgr is null;)
+
+Jones          Blake                 clerk
+(select empno, ename , mgr from emp where mgr = 7839;)
+
+To find the employee whose reporting to Jones/Blake/Clerk
+
+select e1.empno, e1.ename , e1.mgr 
+from emp   e1
+left join emp e2
+on e2.mgr = e1.empno
+where e2.mgr is null;
+
+
+To find the hiearical query 
+With recursive category_path(empno, ename , path ) as
+(
+select empno, ename ,substr(ename,1) as path 
+from emp where mgr is null
+union all
+select e.empno, e.ename , concat(cp.path,'>',e.ename) from 
+category_path  cp 
+join emp e
+on cp.empno = e.mgr)
+select * from category_path
+
+order by path;
+
+
+**************************************
+
+select empno, ename ,(ename) as path 
+from emp where mgr is null
+union all
+select e.empno, e.ename  from 
+category_path  cp 
+join emp e
+on cp.empno = e.mgr)
+
+
+
+View 
+View is a virtual table  created by sql query by joining one or more table 
+
+syntax view
+
+create or replace view  view_name 
+as select column_name1, comumn_name.....
+from table_name ;
+
+
+select e.first_name  ,d.department_name , e.salary   from employees e
+join  departments d
+on e.department_id = d.department_id ;
+
+create or replace view anand_vw
+as 
+select e.first_name  ,d.department_name , e.salary   from employees e
+join  departments d
+on e.department_id = d.department_id ;
+
+
+select * from anand_vw;
+
+
+To show View 
+show full tables  where Table_type = 'VIEW';
+
+To drop View
+
+syntax
+drop view view_name ;
+
+drop view   avg_dept_sal;
+
+Rename View
+Syntax
+rename table old_view to new_view;
+
+rename table anand_vw to emp_inf_vw;
