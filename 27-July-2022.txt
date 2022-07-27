@@ -1,0 +1,153 @@
+Index
+   Index is quickly find rows with specific column values , 
+without index mysql must scan the whole the table .
+
+Index is a process to find an unordered list into an order list 
+
+Primary Key -> Unique index is default 	;
+
+
+How to create index 
+syntax  
+create  index index_name  on table_name (column_list);
+
+
+
+create table emp_info1(
+id int ,
+name varchar(20),
+age int,
+sal decimal (8,2),
+primary key (int)
+);
+
+
+## To show index 
+Syntax 
+show indexes from table_name;
+
+
+Types of Index 
+1 Ascending index
+2  Descending index
+3 Unique index
+4 composite index
+5 function based index- sum/max/min etc 
+6 Bitree 
+
+Drop Index 
+Syntax 
+Drop index index_name on table_name   
+
+Unique Index 
+
+syntax 
+create unique index index_name on table_name (column_name);
+
+Where we are using unique index
+Example : emailid -> every employee have unique index 
+
+
+Composite Index 
+Index on multiple columns mysql allows to create composite index 
+that consists upto 16 columns 
+
+Syntax
+create index index_name on Table_name (column_name1, ......upto 16);
+
+
+create index sal_age_comp_indx om emp_info1 (age, sal);
+
+
+Regular Expression   
+                      -> A regular expression is a special string
+that describes  a search pattern ;
+Syntax 
+ Select  column_list1..... from table_name where field_name  REGEXP 'pattern';
+
+Regular Expression Meta character 
+
+1 ^ (caret) ->   used to start matches at the begining of  searched string.
+
+2 $ (doller)  start matches at the end of searched string
+
+3 . [dot]      matches any simple  character 
+
+4 [abc]     ->   match any character not specified in the square bracket 
+
+5 [^abc]  ->  match any character not specified in the square bracket 
+
+6  * [asterisk]  ->   match zero or more instance 
+
+7 +  [plus]   ->  match one or more instance of presenting string 
+
+8 {n}      -> match n instance  of the presenting string 
+
+9 {m,n}  ->  match m and n instance of the presenting string
+
+
+To create Table 
+
+create table student_info
+(stu_id  int,
+stu_code varchar(20),
+stu_name varchar(20),
+subject_name  varchar(20),
+marks int,
+phone varchar(20)
+);
+
+insert into student_info values(1,101,'Mark','English',68,'34559826');
+insert into student_info values(2,102,'Joseph','Physics',69,'98559826');
+insert into student_info values(3,103,'John','Maths',62,'76559826');
+insert into student_info values(4,104,'Barack','Science',55,'34559855');
+insert into student_info values(5,105,'Rinky','Maths',72,'34559812');
+insert into student_info values(6,106,'Adam','Science',55,'34559834');
+insert into student_info values(7,107,'Andrew','Biology',85,'34559856');
+insert into student_info values(8,108,'Brayan','Maths',90,'34559878');
+insert into student_info values(9,109,'Alexender','English',67,'34559826');
+
+
+** search for student name whose starts with 'A and B;
+Syntax 1
+select * from student_info where stu_name like 'A%'
+union all
+select * from student_info where stu_name like 'B%';
+
+Syntax 2
+select * from student_info 
+where stu_name like 'A%'
+or stu_name like 'B%'
+order by stu_name ;
+
+Syntax 3
+
+select * from student_info where stu_name REGEXP '^[ab]'
+order by stu_name;
+
+** Get the student_info whose name ends with K
+
+Syntax
+select * from student_info where stu_name like '%k';
+
+
+Syntax Reg_exp
+select * from student_info where stu_name REGEXP 'k$';
+
+
+** Get the student information whose name contains exectly 6 character 
+With T as
+(select length(stu_name) as l,
+stu_id, stu_code, stu_name , subject_name , marks, phone
+ from student_info)
+ select * from T where l =6;
+
+
+Using Reg exp
+
+select * from student_info where stu_name REGEXP  '^.{6}$';
+
+
+
+
+
