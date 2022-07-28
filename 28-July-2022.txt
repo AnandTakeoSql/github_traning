@@ -1,0 +1,140 @@
+## Get the student info whose subject contains 'i'
+Syntex 1
+select * from student_info where subject_name like '%i%';
+Syntex 2
+select * from  student_info where subject_name  regexp 'i';
+
+
+RLIKE Operator 
+             pattern matching (regular expression ) It is used for the given
+ string match  a regular expression or not ;
+
+Returns 1(T) string match
+Returns 0(F) string not match
+
+Syntex
+select column_name 1, ...... from table_name 
+where column_name  RLIKE 'pattern';
+
+
+# student name , subject name and marks whose subject  ends with 's' and 'y';
+
+Syntex 1
+select * from student_info
+where subject_name like '%s'
+or subject_name like '%y';
+
+
+
+Syntex 2
+select * from student_info
+where subject_name rlike 's$|y$|k$|z$';
+
+
+NOT LIKE -Operator 
+                    -> Either match or not a specific value 
+
+Syntex 
+field_name /column_name 
+
+Select field_name1 , ...... from table_name where field_name not like 'pattern';
+
+#  student information table   whose name doesnot start with 'A';
+
+select * from student_info where stu_name  not like 'A%';
+
+# student details info table , whose subject name doesnot end with 's';
+select * from student_info  where subject_name not like '%s';
+
+
+##  Not Regexp Operator 
+               ->used for pattern match 
+ * get the emp details whose name does not starts with J or S;
+
+syntex 1
+with T as (
+select first_name from employees 
+where first_name not like 'J%' 
+order by first_name)
+select * from T where first_name not like 'S%';
+
+Syntex 2
+select * from student_info
+where stu_name  not  rlike   'j|s';
+
+Syntex 3
+select * from student_info
+where stu_name  not regexp '^[js]';
+
+
+
+## Control flow
+1 IF () function
+2 IFNULL() function
+3 NULLIF() function
+4 Case   -> Already discuesed
+
+
+
+IF() function
+The fun return a value Yes  when the given condition evalutes to true and return NO
+then false.
+
+Syntex
+if(exp1, exp2, exp3)
+
+Parameter          Requirement         Description
+exp1                 Required           It is a value which is used for validation
+exp2                 Optional           It return the value when condition true
+exp3                 Optional           It return the value when then condition false
+
+Syntex1
+select if (200> 350 ,'Yes','No')as result; 
+
+syntex 2
+select if(251 = 251, 'correct', 'wrong') as result;
+
+select id, name , if(age> 18 ,'Ready for vote ', 'Not eligiable') as result
+from emp_inf03;
+
+IFNULL () function
+                   -> ifnull  control flow function used for handling null values
+
+syntex ifnull(exp1, exp2)
+
+exp1     Required  -> To check whether it is null or not
+exp2     Required   -> It return when the expression is null
+syntex 
+syntex 1
+select ifnull("Hello", "MYSQL");
+syntex 2
+select  ifnull(null, 5) as result;	
+
+
+select name , ifnull(phone_no_1, phone_no_2) as ph_no
+from emp_info5;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   
+
+
