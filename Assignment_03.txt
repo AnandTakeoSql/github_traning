@@ -1,0 +1,30 @@
+1 Select Nth Highest salary from employee table?
+2 Select TOP N salary from employee table?
+3 Select TOP 2 salary from employee table?
+4 Select First_Name,LAST_NAME from employee table as separate rows?
+5 Write syntax to set 2 fields (EMPLOYEE_ID,FIRST_NAME) as primary key in employee Table?
+6 Write SQL to drop foreign key on employee table?
+7 Get department,total salary with respect to a department from employee table?
+8 Get employee details from employee table whose joining year is “2013”?
+9 Get employee details from employee table who joined after January 31st?
+10 Get employee details from employee table whose Salary between 500000 and 80000
+11 Get all employee details from the employee table order by First_Name Ascending and Salary descending?
+12 Write an SQL query to show one row twice in results from a table.
+13 Write an SQL query to fetch the first 50% records from a table.
+14 Write an SQL query to fetch the departments that have less than five people in it.
+15 Write an SQL query to show the last record from a table.
+16 Write an SQL query to fetch the last five records from a table.
+17 Write an SQL query to print the name of employees having the highest salary in each department.
+18 Write an SQL query to fetch three max salaries from a table.
+19 Write an SQL query to fetch three min salaries from a table.
+20 Write an SQL query to fetch duplicate records having matching data in some fields of a table.
+21 Write an SQL query to fetch worker names with salaries >= 50000 and <= 100000
+22 Write a query to display the current date and time?
+23 Write a query to append '@example.com' to email field.
+24 Write a query to extract the last 4 character of phone numbers
+25 Write a query to get the last word of the street address
+26 Write a query to display the length of first name for employees where last name contain character 'c' after 2nd position. 
+27 Write a query that displays the first name and the length of the first name for all employees whose name starts with the letters 'A', 'J' or 'M'. Give each column an appropriate label. Sort the results by the employees' first names
+28 Write a query to find the 4th minimum salary in the employees table.
+29 Write a query to fetch even numbered records from employees table.
+30 Write a query to find the name (first_name, last_name), and salary of the employees whose salary is greater than the average salary of all departments
