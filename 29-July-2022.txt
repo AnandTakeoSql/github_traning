@@ -1,0 +1,96 @@
+1  Diff b/n delete and truncate ?
+   Delete                            Truncate
+a> DML Command                       DDL command
+b> delete specific rows              All rows will be removed
+c> can we use where condition        Cannot we use where condition
+d> Performance based slower          Performance based faster 
+
+2 Diff b/n union and union all
+      Union                                     Union All
+a> Union is set operator to fetch records from two diff tables/data sets
+  which eliminates duplicat records
+
+  UnionAll  is set operator to fetch records from two diff tables/data sets
+  which does not elimantes the duplicate records
+
+b>  For performance tuning union  is not best choice .
+     For performance tuning union  is  best choice .
+c > Syntex 
+     select field_name 1(varchar)  ..... from table_name 
+     union
+     select field_name 1(varchar)  ..... from table_name; 
+
+    select field_name 1  ..... from table_name 
+     unionAll
+     select field_name 1  ..... from table_name; 
+3 Find the duplicate records.
+
+Syntax
+CREATE TABLE student_contacts (  
+    id INT PRIMARY KEY AUTO_INCREMENT,  
+    name VARCHAR(50) NOT NULL,  
+    state VARCHAR(50) NOT NULL,  
+    email VARCHAR(255) NOT NULL  
+);  
+
+
+INSERT INTO student_contacts (name, state, email)   
+VALUES ('Carine', 'Texas', 'carine@javatpoint.com'),  
+('Carine', 'Texas', 'carine@javatpoint.com'),  
+('Peter', 'New York', 'peter@javatpoint.com'),  
+('Janine ', 'Florida', 'janine@javatpoint.com'),  
+('Janine ', 'Florida', 'janine@javatpoint.com'),  
+('Jonas ', 'Atlanta', 'jonas@javatpoint.com'),  
+('Jean', 'California', 'jean@javatpoint.com'),  
+('Jean', 'California', 'jean@javatpoint.com'),  
+('Mark ', 'Florida', 'mark@javatpoint.com'),  
+('Roland', 'Alabama', 'roland@javatpoint.com'),  
+('Roland', 'Alabama', 'roland@javatpoint.com'),  
+('Julie', 'Texas', 'julie@javatpoint.com'),  
+('Shane', 'New York', 'shane@javatpoint.com'),  
+('Susan', 'Arizona', 'susan@javatpoint.com'),  
+('Susan', 'Arizona', 'susan@javatpoint.com')
+
+
+Syntex
+SELECT   
+    name, COUNT(name),  
+    state, COUNT(state),  
+    email, COUNT(email)  
+FROM student_contacts  
+GROUP BY name, state, email
+HAVING  COUNT(name) > 1  
+    AND COUNT(state) > 1  
+    AND COUNT(email) > 1; 
+
+
+4 Delete duplicate records
+
+select id , name , row_number() over(partition by name order by name) as r_no
+from student_contacts;
+
+select id  from 
+(select id , name , row_number() over(partition by name order by name) as r_no
+from student_contacts) as Temp_Table where r_no >1;
+
+
+delete from student_contacts where id in
+(select id  from 
+(select id , name , row_number() over(partition by name order by name) as r_no
+from student_contacts) as Temp_Table where r_no >1)
+;
+
+
+ 5  To find odd/Even records in emp table;
+
+select * from employees where mod(employee_id,2) = 0;
+
+select * from employees where mod(employee_id,2) <> 0;
+
+
+6 To find 3rd highest salary using dense rank function
+
+with T as(
+select dense_rank() over(order by salary desc) as rnk, E.*
+from employees  E)
+select * from T where rnk = 3;
